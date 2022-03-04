@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class IrisdatasetCsv(
+data class IrisdatasetCsvResponse(
     @SerialName("filename")
     var filename: String,
     @SerialName("language")

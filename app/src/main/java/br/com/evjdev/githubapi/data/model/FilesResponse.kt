@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Files(
+data class FilesResponse(
     @SerialName("irisdataset.csv")
-    var irisdatasetCsv: IrisdatasetCsv
+    var irisdatasetCsvResponse: IrisdatasetCsvResponse
 )

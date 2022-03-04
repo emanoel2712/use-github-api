@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Owner(
+data class OwnerResponse(
     @SerialName("avatar_url")
     var avatarUrl: String,
     @SerialName("events_url")
