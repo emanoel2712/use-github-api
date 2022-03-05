@@ -11,9 +11,11 @@ class GistsRepositoryImpl @Inject constructor(
     private val githubAPI: GithubAPI
 ) : GistsRepository {
 
-    override suspend fun getGists(): Gists {
+    override suspend fun getGists(): List<Gists> {
         return try {
-            githubAPI.getGists().toDomain()
+            githubAPI.getGists().map {
+                it.toDomain()
+            }
 
         } catch (ex: Exception) {
             throw GistsRepositoryException()

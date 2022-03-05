@@ -4,5 +4,5 @@ import br.com.evjdev.githubapi.domain.model.Gists
 
 interface GistsRepository {
 
-    suspend fun getGists(): Gists
+    suspend fun getGists(): List<Gists>
 }

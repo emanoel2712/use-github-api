@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetGistsUseCase @Inject constructor(private val repository: GistsRepository) {
 
-    suspend operator fun invoke(): Result<Gists> {
+    suspend operator fun invoke(): Result<List<Gists>> {
         return try {
             Result.success(repository.getGists())
         } catch (ex: Exception) {

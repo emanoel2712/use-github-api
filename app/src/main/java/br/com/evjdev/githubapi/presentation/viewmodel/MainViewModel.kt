@@ -16,14 +16,16 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val getGistsUseCase: GetGistsUseCase) :
     ViewModel() {
 
-    private var _gists = MutableLiveData<GistsViewObject>()
-    var gists: LiveData<GistsViewObject> = _gists
+    private var _gists = MutableLiveData<List<GistsViewObject>>()
+    var gists: LiveData<List<GistsViewObject>> = _gists
 
     fun getGists() {
         viewModelScope.launch(Dispatchers.IO) {
 
             getGistsUseCase().onSuccess {
-                _gists.postValue(GistsViewObject(it))
+                _gists.postValue(it.map { gists ->
+                    GistsViewObject(gists)
+                })
 
             }.onFailure {
 
