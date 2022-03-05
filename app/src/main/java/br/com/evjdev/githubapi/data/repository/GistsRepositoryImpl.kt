@@ -16,7 +16,6 @@ class GistsRepositoryImpl @Inject constructor(
             githubAPI.getGists().map {
                 it.toDomain()
             }
-
         } catch (ex: Exception) {
             throw GistsRepositoryException()
         }

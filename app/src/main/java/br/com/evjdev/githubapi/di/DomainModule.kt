@@ -2,6 +2,8 @@ package br.com.evjdev.githubapi.di
 
 import br.com.evjdev.githubapi.data.repository.GistsRepository
 import br.com.evjdev.githubapi.data.repository.GistsRepositoryImpl
+import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCase
+import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,4 +17,9 @@ abstract class DomainModule {
     abstract fun bindGistsRepository(
         gistsRepositoryImpl: GistsRepositoryImpl
     ): GistsRepository
+
+    @Binds
+    abstract fun bindGistsUseCase(
+        gistsUseCaseImpl: GetGistsUseCaseImpl
+    ): GetGistsUseCase
 }
