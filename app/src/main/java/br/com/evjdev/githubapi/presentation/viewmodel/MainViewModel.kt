@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import br.com.evjdev.githubapi.domain.model.Gists
 import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCase
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class MainViewModel @Inject constructor(private val getGistsUseCase: GetGistsUseCase) :
     ViewModel() {
 
