@@ -38,7 +38,7 @@ data class GistsResponse(
     @SerialName("owner")
     var ownerResponse: OwnerResponse,
     @SerialName("public")
-    var `public`: Boolean,
+    var public: Boolean,
     @SerialName("truncated")
     var truncated: Boolean,
     @SerialName("updated_at")
