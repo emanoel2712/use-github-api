@@ -14,12 +14,12 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class DomainModule {
 
     @Binds
-    abstract fun bindGistsRepository(
-        gistsRepositoryImpl: GistsRepositoryImpl
-    ): GistsRepository
-
-    @Binds
     abstract fun bindGistsUseCase(
         gistsUseCaseImpl: GetGistsUseCaseImpl
     ): GetGistsUseCase
+
+    @Binds
+    abstract fun bindGistsRepository(
+        gistsRepositoryImpl: GistsRepositoryImpl
+    ): GistsRepository
 }

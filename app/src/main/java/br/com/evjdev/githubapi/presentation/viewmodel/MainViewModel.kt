@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCase
 import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCaseImpl
+import br.com.evjdev.githubapi.network.utils.NetworkConnection
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val getGistsUseCase: GetGistsUseCase) :
+class MainViewModel @Inject constructor(
+    private val getGistsUseCase: GetGistsUseCase
+) :
     ViewModel() {
 
     private var _gists = MutableLiveData<List<GistsViewObject>>()
@@ -26,7 +29,7 @@ class MainViewModel @Inject constructor(private val getGistsUseCase: GetGistsUse
                     GistsViewObject(gists)
                 })
             }.onFailure {
-
+                println("falha " + it.message)
             }
         }
     }

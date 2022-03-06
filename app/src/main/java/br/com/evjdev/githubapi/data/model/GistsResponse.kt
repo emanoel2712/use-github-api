@@ -10,45 +10,37 @@ import kotlin.math.log
 @Serializable
 data class GistsResponse(
     @SerialName("comments")
-    var comments: Int,
+    val comments: Int?,
     @SerialName("comments_url")
-    var commentsUrl: String,
+    val commentsUrl: String?,
     @SerialName("commits_url")
-    var commitsUrl: String,
+    val commitsUrl: String?,
     @SerialName("created_at")
-    var createdAt: String,
+    val createdAt: String?,
     @SerialName("description")
-    var description: String,
-    /*
-    @SerialName("files")
-    var files: Files,
-     */
+    val description: String?,
     @SerialName("forks_url")
-    var forksUrl: String,
+    val forksUrl: String?,
     @SerialName("git_pull_url")
-    var gitPullUrl: String,
+    val gitPullUrl: String?,
     @SerialName("git_push_url")
-    var gitPushUrl: String,
+    val gitPushUrl: String?,
     @SerialName("html_url")
-    var htmlUrl: String,
+    val htmlUrl: String?,
     @SerialName("id")
-    var id: String,
+    val id: String?,
     @SerialName("node_id")
-    var nodeId: String,
+    val nodeId: String?,
     @SerialName("owner")
-    var ownerResponse: OwnerResponse,
+    val ownerResponse: OwnerResponse?,
     @SerialName("public")
-    var public: Boolean,
+    val public: Boolean?,
     @SerialName("truncated")
-    var truncated: Boolean,
+    val truncated: Boolean?,
     @SerialName("updated_at")
-    var updatedAt: String,
+    val updatedAt: String?,
     @SerialName("url")
-    var url: String
-    /*
-    @SerialName("user")
-    var user: Any
-     */
+    val url: String?
 )
 
 fun GistsResponse.toDomain(): Gists = Gists(
@@ -64,24 +56,24 @@ fun GistsResponse.toDomain(): Gists = Gists(
     id = id,
     nodeId = nodeId,
     owner = Owner(
-        avatarUrl = ownerResponse.avatarUrl,
-        eventsUrl = ownerResponse.eventsUrl,
-        followersUrl = ownerResponse.followersUrl,
-        followingUrl = ownerResponse.followingUrl,
-        gistsUrl = ownerResponse.gistsUrl,
-        gravatarId = ownerResponse.gravatarId,
-        htmlUrl = ownerResponse.htmlUrl,
-        id = ownerResponse.id,
-        login = ownerResponse.login,
-        nodeId = ownerResponse.nodeId,
-        organizationsUrl = ownerResponse.organizationsUrl,
-        receivedEventsUrl = ownerResponse.receivedEventsUrl,
-        reposUrl = ownerResponse.reposUrl,
-        siteAdmin = ownerResponse.siteAdmin,
-        starredUrl = ownerResponse.starredUrl,
-        subscriptionsUrl = ownerResponse.subscriptionsUrl,
-        type = ownerResponse.type,
-        url = ownerResponse.url
+        avatarUrl = ownerResponse?.avatarUrl,
+        eventsUrl = ownerResponse?.eventsUrl,
+        followersUrl = ownerResponse?.followersUrl,
+        followingUrl = ownerResponse?.followingUrl,
+        gistsUrl = ownerResponse?.gistsUrl,
+        gravatarId = ownerResponse?.gravatarId,
+        htmlUrl = ownerResponse?.htmlUrl,
+        id = ownerResponse?.id,
+        login = ownerResponse?.login,
+        nodeId = ownerResponse?.nodeId,
+        organizationsUrl = ownerResponse?.organizationsUrl,
+        receivedEventsUrl = ownerResponse?.receivedEventsUrl,
+        reposUrl = ownerResponse?.reposUrl,
+        siteAdmin = ownerResponse?.siteAdmin,
+        starredUrl = ownerResponse?.starredUrl,
+        subscriptionsUrl = ownerResponse?.subscriptionsUrl,
+        type = ownerResponse?.type,
+        url = ownerResponse?.url
     ),
     public = public,
     truncated = truncated,

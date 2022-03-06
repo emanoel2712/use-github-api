@@ -7,39 +7,39 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Owner(
     @SerialName("avatar_url")
-    var avatarUrl: String,
+    var avatarUrl: String?,
     @SerialName("events_url")
-    var eventsUrl: String,
+    var eventsUrl: String?,
     @SerialName("followers_url")
-    var followersUrl: String,
+    var followersUrl: String?,
     @SerialName("following_url")
-    var followingUrl: String,
+    var followingUrl: String?,
     @SerialName("gists_url")
-    var gistsUrl: String,
+    var gistsUrl: String?,
     @SerialName("gravatar_id")
-    var gravatarId: String,
+    var gravatarId: String?,
     @SerialName("html_url")
-    var htmlUrl: String,
+    var htmlUrl: String?,
     @SerialName("id")
-    var id: Int,
+    var id: Int?,
     @SerialName("login")
-    var login: String,
+    var login: String?,
     @SerialName("node_id")
-    var nodeId: String,
+    var nodeId: String?,
     @SerialName("organizations_url")
-    var organizationsUrl: String,
+    var organizationsUrl: String?,
     @SerialName("received_events_url")
-    var receivedEventsUrl: String,
+    var receivedEventsUrl: String?,
     @SerialName("repos_url")
-    var reposUrl: String,
+    var reposUrl: String?,
     @SerialName("site_admin")
-    var siteAdmin: Boolean,
+    var siteAdmin: Boolean?,
     @SerialName("starred_url")
-    var starredUrl: String,
+    var starredUrl: String?,
     @SerialName("subscriptions_url")
-    var subscriptionsUrl: String,
+    var subscriptionsUrl: String?,
     @SerialName("type")
-    var type: String,
+    var type: String?,
     @SerialName("url")
-    var url: String
+    var url: String?
 )

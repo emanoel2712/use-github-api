@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface GithubAPI {
 
-    @GET
+    @GET("/gists")
     suspend fun getGists(): List<GistsResponse>
 }

@@ -3,43 +3,44 @@ package br.com.evjdev.githubapi.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.security.acl.Owner
 
 @Serializable
 data class OwnerResponse(
     @SerialName("avatar_url")
-    var avatarUrl: String,
+    val avatarUrl: String?,
     @SerialName("events_url")
-    var eventsUrl: String,
+    val eventsUrl: String?,
     @SerialName("followers_url")
-    var followersUrl: String,
+    val followersUrl: String?,
     @SerialName("following_url")
-    var followingUrl: String,
+    val followingUrl: String?,
     @SerialName("gists_url")
-    var gistsUrl: String,
+    val gistsUrl: String?,
     @SerialName("gravatar_id")
-    var gravatarId: String,
+    val gravatarId: String?,
     @SerialName("html_url")
-    var htmlUrl: String,
+    val htmlUrl: String?,
     @SerialName("id")
-    var id: Int,
+    val id: Int?,
     @SerialName("login")
-    var login: String,
+    val login: String?,
     @SerialName("node_id")
-    var nodeId: String,
+    val nodeId: String?,
     @SerialName("organizations_url")
-    var organizationsUrl: String,
+    val organizationsUrl: String?,
     @SerialName("received_events_url")
-    var receivedEventsUrl: String,
+    val receivedEventsUrl: String?,
     @SerialName("repos_url")
-    var reposUrl: String,
+    val reposUrl: String?,
     @SerialName("site_admin")
-    var siteAdmin: Boolean,
+    val siteAdmin: Boolean?,
     @SerialName("starred_url")
-    var starredUrl: String,
+    val starredUrl: String?,
     @SerialName("subscriptions_url")
-    var subscriptionsUrl: String,
+    val subscriptionsUrl: String?,
     @SerialName("type")
-    var type: String,
+    val type: String?,
     @SerialName("url")
-    var url: String
+    val url: String?
 )
