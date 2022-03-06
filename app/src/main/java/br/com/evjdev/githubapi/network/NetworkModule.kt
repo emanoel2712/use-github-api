@@ -1,7 +1,6 @@
 package br.com.evjdev.githubapi.network
 
 import br.com.evjdev.githubapi.network.utils.InterceptorCustomImpl
-import br.com.evjdev.githubapi.network.utils.NetworkConnectionImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,8 +11,8 @@ import dagger.hilt.components.SingletonComponent
 class NetworkModule() {
 
     @Provides
-    fun providesServiceProvider(networkConnectionImpl: NetworkConnectionImpl): ServiceProvider {
-        val interceptorCustomImpl = InterceptorCustomImpl(networkConnectionImpl)
+    fun providesServiceProvider(): ServiceProvider {
+        val interceptorCustomImpl = InterceptorCustomImpl()
         return ServiceProvider(interceptorCustomImpl)
     }
 }

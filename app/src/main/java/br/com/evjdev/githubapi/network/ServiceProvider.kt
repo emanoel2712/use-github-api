@@ -5,7 +5,9 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class ServiceProvider @Inject constructor(interceptorCustom: InterceptorCustom) {
@@ -17,7 +19,10 @@ class ServiceProvider @Inject constructor(interceptorCustom: InterceptorCustom) 
         isLenient = true
     }
 
-    private val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptorCustom)
+    private val iLogging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    private val okHttpClient =
+        OkHttpClient.Builder().addInterceptor(interceptorCustom)
+            .connectTimeout(60, TimeUnit.SECONDS).readTimeout(60, TimeUnit.SECONDS).addInterceptor(iLogging)
     private val retrofit = Retrofit.Builder().client(okHttpClient.build()).baseUrl(baseUrl)
         .addConverterFactory(json.asConverterFactory(contentType)).build()
 

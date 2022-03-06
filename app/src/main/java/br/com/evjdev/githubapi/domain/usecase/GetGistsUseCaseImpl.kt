@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetGistsUseCaseImpl @Inject constructor(
     private val gistsRepository: GistsRepository
-    ): GetGistsUseCase {
+) : GetGistsUseCase {
 
     override suspend fun invoke(): Result<List<Gists>> {
         return try {

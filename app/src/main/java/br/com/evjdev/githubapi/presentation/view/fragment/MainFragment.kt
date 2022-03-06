@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.FragmentMainBinding
+import br.com.evjdev.githubapi.extension.showSnackBar
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
+import br.com.evjdev.githubapi.presentation.model.ViewState
 import br.com.evjdev.githubapi.presentation.view.adapter.AdapterGists
 import br.com.evjdev.githubapi.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +43,10 @@ class MainFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.viewState.observe(viewLifecycleOwner, {
+            this.setViewState(it)
+        })
+
         viewModel.gists.observe(viewLifecycleOwner, {
             this.setupRV(it)
         })
@@ -47,5 +54,28 @@ class MainFragment : Fragment() {
 
     private fun setupRV(gists: List<GistsViewObject>) {
         binding.rvGists.adapter = AdapterGists(gists)
+    }
+
+    private fun setViewState(viewState: ViewState) {
+        when (viewState) {
+            is ViewState.Loading -> setLoadingState()
+            is ViewState.Success -> setSuccessState()
+            is ViewState.Error -> {
+                println("msg" + getString(id))
+                setErrorState(id)
+            }
+        }
+    }
+
+    private fun setLoadingState() {
+
+    }
+
+    private fun setSuccessState() {
+
+    }
+
+    private fun setErrorState(msg: Int) {
+        this.showSnackBar(getString(msg))
     }
 }
