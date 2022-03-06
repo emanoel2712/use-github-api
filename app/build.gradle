@@ -76,6 +76,12 @@ dependencies {
     //fragment ktx
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
 
+    //image loader
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     //Navigation
     def nav_version = "2.4.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
