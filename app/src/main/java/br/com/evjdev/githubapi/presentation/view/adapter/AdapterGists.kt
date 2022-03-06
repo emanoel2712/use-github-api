@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.evjdev.githubapi.databinding.ItemGistsBinding
+import br.com.evjdev.githubapi.domain.model.Gists
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 
 class AdapterGists(private val gists: List<GistsViewObject>) :
@@ -14,9 +15,7 @@ class AdapterGists(private val gists: List<GistsViewObject>) :
         val gists = gists[position]
 
         with(holder) {
-//            binding.ivUser
-            binding.tvName.text = ""
-
+            binding.tvName.text = gists.owner?.login
 
         }
     }
