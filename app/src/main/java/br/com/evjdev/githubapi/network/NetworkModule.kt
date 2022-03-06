@@ -1,6 +1,6 @@
 package br.com.evjdev.githubapi.network
 
-import br.com.evjdev.githubapi.network.utils.InterceptorCustomImpl
+import br.com.evjdev.githubapi.utils.InterceptorCustomImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

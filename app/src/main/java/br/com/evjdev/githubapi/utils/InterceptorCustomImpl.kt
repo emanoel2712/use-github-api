@@ -1,9 +1,8 @@
-package br.com.evjdev.githubapi.network.utils
+package br.com.evjdev.githubapi.utils
 
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
-import javax.inject.Inject
 
 class InterceptorCustomImpl :
     InterceptorCustom {

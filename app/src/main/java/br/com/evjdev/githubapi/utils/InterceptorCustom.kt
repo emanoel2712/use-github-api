@@ -1,4 +1,4 @@
-package br.com.evjdev.githubapi.network.utils
+package br.com.evjdev.githubapi.utils
 
 import okhttp3.Interceptor
 

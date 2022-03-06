@@ -1,6 +1,6 @@
 package br.com.evjdev.githubapi.network
 
-import br.com.evjdev.githubapi.network.utils.InterceptorCustom
+import br.com.evjdev.githubapi.utils.InterceptorCustom
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

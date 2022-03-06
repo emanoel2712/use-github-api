@@ -37,14 +37,7 @@ class MainViewModel @Inject constructor(
 
                 _viewState.postValue(ViewState.Success)
             }.onFailure {
-                println("exception treat " + it)
-
                 when (it) {
-                    /*
-                    GistsRepositoryException.GenericException -> {
-                        _viewState.postValue(ViewState.Error(R.string.unknow_error))
-                    }
-                     */
                     RepositoryException.NetworkException -> {
                         _viewState.postValue(ViewState.Error(R.string.no_internet_connection))
                     }

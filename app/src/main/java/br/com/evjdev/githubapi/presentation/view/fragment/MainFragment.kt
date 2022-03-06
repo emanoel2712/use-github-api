@@ -61,8 +61,7 @@ class MainFragment : Fragment() {
             is ViewState.Loading -> setLoadingState()
             is ViewState.Success -> setSuccessState()
             is ViewState.Error -> {
-                println("msg" + getString(id))
-                setErrorState(id)
+                setErrorState(viewState.id)
             }
         }
     }
