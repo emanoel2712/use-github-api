@@ -11,3 +11,7 @@ fun View.animationPushRightToLeft() {
 fun View.animationPushLeftToRight() {
     this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.push_right_in))
 }
+
+fun View.animationPushUpIn() {
+    this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.push_up_in))
+}

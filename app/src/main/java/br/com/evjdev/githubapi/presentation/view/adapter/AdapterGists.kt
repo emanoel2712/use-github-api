@@ -5,34 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.ItemGistsBinding
-import br.com.evjdev.githubapi.extension.animationPushRightToLeft
 import br.com.evjdev.githubapi.extension.animationPushLeftToRight
+import br.com.evjdev.githubapi.extension.animationPushRightToLeft
 import br.com.evjdev.githubapi.extension.toDateStr
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import com.squareup.picasso.Picasso
 
-class AdapterGists(private val gists: List<GistsViewObject>) :
+class AdapterGists(
+    private val gists: List<GistsViewObject>,
+    private val onItemClickListener: ((gistsViewObject: GistsViewObject) -> Unit),
+) :
     RecyclerView.Adapter<AdapterGists.GistsViewHolder>() {
 
-    var clickIn: (gists: GistsViewObject) -> Unit = {}
-
     override fun onBindViewHolder(holder: GistsViewHolder, position: Int) {
-
         if (position % 2 == 0) holder.itemView.animationPushLeftToRight() else holder.itemView.animationPushRightToLeft()
-
-        val gists = gists[position]
-
-        with(holder) {
-            binding.tvName.text = gists.owner?.login
-            binding.tvCreatedDate.text = gists.createdAt?.toDateStr()
-            Picasso.get().load(gists.owner?.avatarUrl)
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background).into(binding.ivUser)
-        }
-
-        holder.itemView.setOnClickListener {
-            this.clickIn(gists)
-        }
+        val item = gists[position]
+        holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GistsViewHolder {
@@ -40,12 +28,25 @@ class AdapterGists(private val gists: List<GistsViewObject>) :
         return GistsViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return gists.size
+    inner class GistsViewHolder(private val binding: ItemGistsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(data: GistsViewObject) {
+            with(binding) {
+                tvName.text = data.owner?.login
+                tvCreatedDate.text = data.createdAt?.toDateStr()
+                Picasso.get().load(data.owner?.avatarUrl)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_background).into(ivUser)
+
+                itemView.setOnClickListener {
+                    onItemClickListener.invoke(data)
+                }
+            }
+        }
     }
 
-
-    inner class GistsViewHolder(val binding: ItemGistsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    override fun getItemCount(): Int {
+        return gists.size
     }
 }

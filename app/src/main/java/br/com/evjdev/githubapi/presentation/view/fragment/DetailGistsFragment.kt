@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.FragmentDetailGistsBinding
 import br.com.evjdev.githubapi.domain.model.Gists
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso
 
 class DetailGistsFragment : Fragment() {
 
+    private val args: DetailGistsFragmentArgs by navArgs()
     private var _binding: FragmentDetailGistsBinding? = null
     private val binding get() = _binding!!
 
@@ -32,13 +34,11 @@ class DetailGistsFragment : Fragment() {
     }
 
     private fun setupUI() {
-        arguments?.let {
-            val gists = it.getParcelable<GistsViewObject>(Constants.DETAIL_GISTS)
-            Picasso.get().load(gists?.owner?.avatarUrl).into(binding.ivUser)
-            binding.tvDate.text = gists?.createdAt?.toDateStr()
-            binding.tvName.text = gists?.owner?.login
-            binding.tvDesc.text = gists?.description
-        }
+        val gistsViewObject = args.gistsViewObject
+        Picasso.get().load(gistsViewObject.owner?.avatarUrl).into(binding.ivUser)
+        binding.tvDate.text = gistsViewObject.createdAt?.toDateStr()
+        binding.tvName.text = gistsViewObject.owner?.login
+        binding.tvDesc.text = gistsViewObject.description
     }
 
     override fun onDestroy() {

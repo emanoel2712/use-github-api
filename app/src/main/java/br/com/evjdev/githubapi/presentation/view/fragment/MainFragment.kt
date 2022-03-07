@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import br.com.evjdev.githubapi.databinding.FragmentMainBinding
-import br.com.evjdev.githubapi.extension.animationPushLeftToRight
+import br.com.evjdev.githubapi.extension.animationPushUpIn
 import br.com.evjdev.githubapi.extension.showSnackBar
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import br.com.evjdev.githubapi.presentation.model.ViewState
 import br.com.evjdev.githubapi.presentation.view.adapter.AdapterGists
 import br.com.evjdev.githubapi.presentation.viewmodel.MainViewModel
-import br.com.evjdev.githubapi.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -49,19 +51,17 @@ class MainFragment : Fragment() {
 
         viewModel.gists.observe(viewLifecycleOwner, {
             this.setupRV(it)
+            binding.rvGists.animationPushUpIn()
         })
     }
 
     private fun setupRV(gists: List<GistsViewObject>) {
-        val adapterGists = AdapterGists(gists)
-        adapterGists.clickIn = {
-            val bundle = Bundle()
-            bundle.putParcelable(Constants.DETAIL_GISTS, it)
-            this.findNavController()
-                .navigate(MainFragmentDirections.actionMainFragmentToDetailGists().actionId, bundle)
+        val gistsAdapter = AdapterGists(gists) {
+            val directions = MainFragmentDirections.actionMainFragmentToDetailGists(it)
+            this.findNavController().navigate(directions)
         }
 
-        binding.rvGists.adapter = adapterGists
+        binding.rvGists.adapter = gistsAdapter
     }
 
     private fun setViewState(viewState: ViewState) {
@@ -84,5 +84,10 @@ class MainFragment : Fragment() {
 
     private fun setErrorState(msg: Int) {
         this.showSnackBar(getString(msg))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

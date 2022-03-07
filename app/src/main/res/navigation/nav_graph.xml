@@ -9,7 +9,6 @@
         android:id="@+id/MainFragment"
         android:name="br.com.evjdev.githubapi.presentation.view.fragment.MainFragment"
         tools:layout="@layout/fragment_main">
-
         <action
             android:id="@+id/action_main_fragment_to_detail_gists"
             app:destination="@+id/DetailGistsFragment" />
@@ -18,5 +17,11 @@
     <fragment
         android:id="@+id/DetailGistsFragment"
         android:name="br.com.evjdev.githubapi.presentation.view.fragment.DetailGistsFragment"
-        tools:layout="@layout/fragment_detail_gists" />
+        tools:layout="@layout/fragment_detail_gists">
+
+        <argument
+            android:name="gistsViewObject"
+            app:argType="br.com.evjdev.githubapi.presentation.model.GistsViewObject"
+            app:nullable="false" />
+    </fragment>
 </navigation>
