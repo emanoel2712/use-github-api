@@ -80,6 +80,7 @@ class MainFragment : Fragment() {
     }
 
     private fun setErrorState(msg: Int) {
+        binding.progress.gone()
         this.showSnackBar(getString(msg))
     }
 

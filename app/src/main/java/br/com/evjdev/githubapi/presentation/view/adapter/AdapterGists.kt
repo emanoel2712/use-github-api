@@ -36,8 +36,8 @@ class AdapterGists(
                 tvName.text = data.owner?.login
                 tvCreatedDate.text = data.createdAt?.toDateStr()
                 Picasso.get().load(data.owner?.avatarUrl)
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .error(R.drawable.ic_launcher_background).into(ivUser)
+                    .placeholder(R.color.ic_launcher_background)
+                    .error(R.color.ic_launcher_background).into(ivUser)
 
                 itemView.setOnClickListener {
                     onItemClickListener.invoke(data)
