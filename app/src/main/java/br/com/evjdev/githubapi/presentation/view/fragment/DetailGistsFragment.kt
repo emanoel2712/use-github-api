@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.FragmentDetailGistsBinding
-import br.com.evjdev.githubapi.domain.model.Gists
 import br.com.evjdev.githubapi.extension.toDateStr
-import br.com.evjdev.githubapi.presentation.model.GistsViewObject
-import br.com.evjdev.githubapi.utils.Constants
 import com.squareup.picasso.Picasso
 
 class DetailGistsFragment : Fragment() {
