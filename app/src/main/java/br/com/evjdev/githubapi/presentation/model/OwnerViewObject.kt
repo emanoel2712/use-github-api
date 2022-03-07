@@ -1,9 +1,12 @@
 package br.com.evjdev.githubapi.presentation.model
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Parcelize
 data class OwnerViewObject(
     var avatarUrl: String?,
     var eventsUrl: String?,
@@ -23,4 +26,4 @@ data class OwnerViewObject(
     var subscriptionsUrl: String?,
     var type: String?,
     var url: String?
-)
+) : Parcelable

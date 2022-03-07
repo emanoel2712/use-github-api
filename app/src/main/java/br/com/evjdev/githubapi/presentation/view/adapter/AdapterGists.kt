@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso
 class AdapterGists(private val gists: List<GistsViewObject>) :
     RecyclerView.Adapter<AdapterGists.GistsViewHolder>() {
 
+    var clickIn: (gists: GistsViewObject) -> Unit = {}
+
     override fun onBindViewHolder(holder: GistsViewHolder, position: Int) {
 
         if (position % 2 == 0) holder.itemView.animationPushLeftToRight() else holder.itemView.animationPushRightToLeft()
@@ -26,6 +28,10 @@ class AdapterGists(private val gists: List<GistsViewObject>) :
             Picasso.get().load(gists.owner?.avatarUrl)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background).into(binding.ivUser)
+        }
+
+        holder.itemView.setOnClickListener {
+            this.clickIn(gists)
         }
     }
 

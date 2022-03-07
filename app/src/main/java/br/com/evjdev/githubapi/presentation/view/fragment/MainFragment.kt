@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.evjdev.githubapi.databinding.FragmentMainBinding
 import br.com.evjdev.githubapi.extension.animationPushLeftToRight
 import br.com.evjdev.githubapi.extension.showSnackBar
@@ -13,6 +14,7 @@ import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import br.com.evjdev.githubapi.presentation.model.ViewState
 import br.com.evjdev.githubapi.presentation.view.adapter.AdapterGists
 import br.com.evjdev.githubapi.presentation.viewmodel.MainViewModel
+import br.com.evjdev.githubapi.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,7 +53,15 @@ class MainFragment : Fragment() {
     }
 
     private fun setupRV(gists: List<GistsViewObject>) {
-        binding.rvGists.adapter = AdapterGists(gists)
+        val adapterGists = AdapterGists(gists)
+        adapterGists.clickIn = {
+            val bundle = Bundle()
+            bundle.putParcelable(Constants.DETAIL_GISTS, it)
+            this.findNavController()
+                .navigate(MainFragmentDirections.actionMainFragmentToDetailGists().actionId, bundle)
+        }
+
+        binding.rvGists.adapter = adapterGists
     }
 
     private fun setViewState(viewState: ViewState) {

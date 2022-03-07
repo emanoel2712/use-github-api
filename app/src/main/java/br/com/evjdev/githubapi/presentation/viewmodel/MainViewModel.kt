@@ -38,10 +38,10 @@ class MainViewModel @Inject constructor(
                 _viewState.postValue(ViewState.Success)
             }.onFailure {
                 when (it) {
-                    RepositoryException.NetworkException -> {
+                    is RepositoryException.NetworkException -> {
                         _viewState.postValue(ViewState.Error(R.string.no_internet_connection))
                     }
-                    RepositoryException.HttpException -> {
+                    is RepositoryException.HttpException -> {
                         _viewState.postValue(ViewState.Error(R.string.error_api))
                     }
                 }

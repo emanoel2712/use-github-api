@@ -1,8 +1,10 @@
 package br.com.evjdev.githubapi.presentation.model
 
+import android.os.Parcelable
 import br.com.evjdev.githubapi.domain.model.Gists
-import br.com.evjdev.githubapi.domain.model.Owner
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class GistsViewObject(
     val comments: Int?,
     val commentsUrl: String?,
@@ -20,7 +22,7 @@ data class GistsViewObject(
     val truncated: Boolean?,
     val updatedAt: String?,
     val url: String?
-) {
+) : Parcelable {
     constructor(gists: Gists) : this(
         comments = gists.comments,
         commentsUrl = gists.commentsUrl,
