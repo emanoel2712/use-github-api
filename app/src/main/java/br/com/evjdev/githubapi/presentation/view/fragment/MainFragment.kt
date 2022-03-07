@@ -6,22 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import br.com.evjdev.githubapi.databinding.FragmentMainBinding
-import br.com.evjdev.githubapi.extension.animationPushUpIn
-import br.com.evjdev.githubapi.extension.showSnackBar
+import br.com.evjdev.githubapi.extension.*
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import br.com.evjdev.githubapi.presentation.model.ViewState
+import br.com.evjdev.githubapi.presentation.view.activity.MainActivity
 import br.com.evjdev.githubapi.presentation.view.adapter.AdapterGists
 import br.com.evjdev.githubapi.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
-
     private val viewModel by viewModels<MainViewModel>()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -42,6 +38,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.setupObservers()
+        this.hideToolbar()
     }
 
     private fun setupObservers() {
@@ -68,18 +65,18 @@ class MainFragment : Fragment() {
         when (viewState) {
             is ViewState.Loading -> setLoadingState()
             is ViewState.Success -> setSuccessState()
-            is ViewState.Error -> {
-                setErrorState(viewState.id)
-            }
+            is ViewState.Error -> setErrorState(viewState.id)
         }
     }
 
     private fun setLoadingState() {
-
+        binding.progress.visible()
+        binding.rvGists.gone()
     }
 
     private fun setSuccessState() {
-
+        binding.progress.gone()
+        binding.rvGists.visible()
     }
 
     private fun setErrorState(msg: Int) {

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.FragmentDetailGistsBinding
+import br.com.evjdev.githubapi.extension.showToolbar
 import br.com.evjdev.githubapi.extension.toDateStr
 import com.squareup.picasso.Picasso
 
@@ -27,6 +29,7 @@ class DetailGistsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.setupUI()
+        this.showToolbar(getString(R.string.detail))
     }
 
     private fun setupUI() {

@@ -3,4 +3,5 @@
     <string name="no_internet_connection">Sem conexão com a internet.</string>
     <string name="unknow_error">Oops! Erro desconhecido, tente mais tarde.</string>
     <string name="error_api">Oops! Houve algum erro com API.</string>
+    <string name="detail">Detalhes</string>
 </resources>
