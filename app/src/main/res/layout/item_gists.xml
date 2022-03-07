@@ -20,7 +20,8 @@
             android:layout_height="60dp"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/white" />
 
         <TextView
             android:id="@+id/tvName"
@@ -44,7 +45,8 @@
             android:textColor="@color/gray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="27/12/1998" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

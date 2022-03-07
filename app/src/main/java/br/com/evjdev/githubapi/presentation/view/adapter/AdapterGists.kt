@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.databinding.ItemGistsBinding
+import br.com.evjdev.githubapi.extension.animationPushRightToLeft
+import br.com.evjdev.githubapi.extension.animationPushLeftToRight
 import br.com.evjdev.githubapi.extension.toDateStr
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import com.squareup.picasso.Picasso
@@ -13,6 +15,9 @@ class AdapterGists(private val gists: List<GistsViewObject>) :
     RecyclerView.Adapter<AdapterGists.GistsViewHolder>() {
 
     override fun onBindViewHolder(holder: GistsViewHolder, position: Int) {
+
+        if (position % 2 == 0) holder.itemView.animationPushLeftToRight() else holder.itemView.animationPushRightToLeft()
+
         val gists = gists[position]
 
         with(holder) {

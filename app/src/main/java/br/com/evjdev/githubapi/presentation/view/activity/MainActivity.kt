@@ -2,7 +2,6 @@ package br.com.evjdev.githubapi.presentation.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
 import br.com.evjdev.githubapi.R
 import dagger.hilt.android.AndroidEntryPoint
 
