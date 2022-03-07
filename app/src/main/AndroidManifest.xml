@@ -15,10 +15,10 @@
         android:theme="@style/Theme.UseGithubAPI">
         <activity
             android:name=".presentation.view.activity.MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
