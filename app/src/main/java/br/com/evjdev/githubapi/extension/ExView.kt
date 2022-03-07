@@ -5,15 +5,15 @@ import android.view.animation.AnimationUtils
 import br.com.evjdev.githubapi.R
 
 fun View.animationPushRightToLeft() {
-    this.startAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in))
+    this.startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_left_in_slow))
 }
 
 fun View.animationPushLeftToRight() {
-    this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.push_right_in))
+    this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.slide_in_right_slow))
 }
 
 fun View.animationPushUpIn() {
-    this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.push_up_in))
+    this.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.slide_up_in))
 }
 
 fun View.visible() {

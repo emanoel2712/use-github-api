@@ -55,7 +55,7 @@ class MainFragment : Fragment() {
     private fun setupRV(gists: List<GistsViewObject>) {
         val gistsAdapter = AdapterGists(gists) {
             val directions = MainFragmentDirections.actionMainFragmentToDetailGists(it)
-            this.findNavController().navigate(directions)
+            this.findNavController().navigationWithAnimations(directions)
         }
 
         binding.rvGists.adapter = gistsAdapter
