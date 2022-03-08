@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UseGithubAPI</string>
+    <string name="no_internet_connection">No connection with internet</string>
+    <string name="unknow_error">Oops! Unknow error, try later.</string>
+    <string name="error_api">Oops! There was some error with API.</string>
+    <string name="detail">Detail</string>
+</resources>
