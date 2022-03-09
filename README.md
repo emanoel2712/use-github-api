@@ -8,7 +8,7 @@
 - Retrofit, Okhttp
 - Kotlin Serialization
 - Material Design
-- Testes unitários com truth
+- Testes unitários com JUnit e Truth
 - Picasso
 - Navigation com safe args
 - Animations
