@@ -15,4 +15,4 @@
 
 [![Alt text](https://img.youtube.com/vi/kr6nK-g9Vtw/0.jpg)](https://www.youtube.com/watch?v=W_o6YAxotDs)
 
-- A idéia futura é implementar o recurso de paginação da requisição através da biblioteca Paging do Android, e também implementar a RecyclerView com DiffUtil.
+- A idéia futura é implementar o recurso de paginação da requisição através da biblioteca Paging3 do Android, e também implementar a RecyclerView com DiffUtil.
