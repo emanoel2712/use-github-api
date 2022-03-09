@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.evjdev.githubapi.R
 import br.com.evjdev.githubapi.data.exception.RepositoryException
+import br.com.evjdev.githubapi.domain.model.Gists
 import br.com.evjdev.githubapi.domain.usecase.GetGistsUseCase
 import br.com.evjdev.githubapi.presentation.model.GistsViewObject
 import br.com.evjdev.githubapi.presentation.model.ViewState
@@ -24,6 +25,9 @@ class MainViewModel @Inject constructor(
 
     private var _viewState = MutableLiveData<ViewState>()
     var viewState: LiveData<ViewState> = _viewState
+
+    private var _gistsFiltered = MutableLiveData<List<GistsViewObject>>()
+    val gistsFiltered: LiveData<List<GistsViewObject>> = _gistsFiltered
 
     fun getGists() {
         _gists.postValue(emptyList())
@@ -47,5 +51,13 @@ class MainViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun filterByName(letter: String) {
+        val result = _gists.value?.filter { gistsViewObject ->
+            gistsViewObject.owner?.login?.contains(letter, true) == true
+        }
+
+        _gistsFiltered.postValue(result ?: emptyList())
     }
 }

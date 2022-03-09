@@ -5,4 +5,5 @@
     <string name="unknow_error">Oops! Unknow error, try later.</string>
     <string name="error_api">Oops! There was some error with API.</string>
     <string name="detail">Detail</string>
+    <string name="search_user">Search for any user</string>
 </resources>
